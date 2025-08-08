@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WD BESAR | PEPEK NETWORK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-dark: #B8860B;
+            --gold-light: #FFD700;
+            --gold-accent: #C5B358;
+            --platinum: #e5e4e2;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-light: #f5f5f5;
+            --text-gray: #aaaaaa;
+            --border-dark: #333333;
+            --border-radius: 10px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+            --success-color: #28a745;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 5% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 95% 90%, rgba(197, 179, 88, 0.05) 0%, transparent 20%);
+        }
+
+        .app-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Header */
+        .app-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-dark);
+        }
+
+        .app-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-accent));
+        }
+
+        .app-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .app-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 24px;
+            border: 1px solid var(--gold-accent);
+        }
+
+        .app-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .app-title span {
+            background: linear-gradient(90deg, var(--gold-light), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .app-subtitle {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Input Section */
+        .input-section {
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-dark);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--gold-primary);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .section-title i {
+            font-size: 18px;
+            color: var(--gold-light);
+        }
+
+        .data-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 1px solid var(--border-dark);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            background: #252525;
+            color: var(--text-light);
+            transition: var(--transition);
+            line-height: 1.5;
+        }
+
+        .data-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+        }
+
+        .input-hint {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-hint i {
+            color: var(--gold-accent);
+            font-size: 14px;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-dark);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .filter-input {
+            background: #252525;
+            border: 1px solid var(--border-dark);
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            width: 170px;
+            transition: var(--transition);
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+        }
+
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+            color: var(--gold-light);
+            border: 1px solid var(--border-dark);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #2e2e2e, #222222);
+            transform: translateY(-2px);
+        }
+
+        /* Results */
+        .results-section {
+            display: none;
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 25px;
+            animation: fadeIn 0.5s ease;
+            position: relative;
+            border: 1px solid var(--border-dark);
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .summary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #252525, #2a2a2a);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 3px solid var(--gold-primary);
+            transition: var(--transition);
+            border: 1px solid var(--border-dark);
+        }
+
+        .summary-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .summary-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .summary-label {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-bottom: 3px;
+        }
+
+        .summary-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+
+        /* Table */
+        .results-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 15px;
+            font-size: 14px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: #252525;
+            border: 1px solid var(--border-dark);
+        }
+
+        .results-table th {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: var(--text-light);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        .results-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-dark);
+            vertical-align: middle;
+            background: #252525;
+            color: var(--text-light);
+        }
+
+        .results-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .results-table tr:nth-child(even) {
+            background-color: rgba(33, 33, 33, 0.5);
+        }
+
+        .results-table tr:hover td {
+            background-color: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Table Cell Styles */
+        .timestamp-cell {
+            color: var(--text-gray);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .user-id-cell {
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .masked-id-cell {
+            font-weight: 500;
+            color: var(--gold-light);
+        }
+
+        .amount-cell {
+            font-weight: 700;
+            color: var(--gold-primary);
+            font-size: 15px;
+        }
+
+        /* Action Buttons */
+        .action-cell {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .action-btn:hover {
+            background: var(--gold-primary);
+            color: var(--bg-dark);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            color: var(--text-light);
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            border-left: 4px solid var(--gold-success);
+            max-width: 90%;
+            pointer-events: none;
+            border: 1px solid var(--border-dark);
+            box-shadow: var(--shadow);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .toast.hide {
+            opacity: 0;
+            transform: translateX(-50%) translateY(10px);
+        }
+
+        .toast-icon {
+            font-size: 18px;
+        }
+
+        .toast.success {
+            border-left-color: #32CD32;
+        }
+
+        .toast.error {
+            border-left-color: #FF4500;
+        }
+
+        .toast.info {
+            border-left-color: var(--gold-primary);
+        }
+
+        /* Footer */
+        .app-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-gray);
+            font-size: 13px;
+            padding: 15px;
+        }
+
+        /* Loader */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--gold-primary);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        .loader-text {
+            margin-top: 10px;
+            color: var(--gold-primary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Congratulations Message */
+        .congrats-container {
+            display: none;
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-top: 25px;
+            position: relative;
+            border: 1px solid var(--border-dark);
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .congrats-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .congrats-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+        }
+
+        .congrats-subtitle {
+            color: var(--text-gray);
+            font-size: 15px;
+        }
+
+        .congrats-message {
+            background: rgba(40, 167, 69, 0.1);
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 15px 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        .congrats-message::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(40, 167, 69, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .congrats-footer {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .highlight {
+            color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        .congrats-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-accent));
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-header {
+                padding: 15px;
+            }
+            
+            .app-title {
+                font-size: 22px;
+            }
+            
+            .input-section, .results-section {
+                padding: 15px;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .summary-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .congrats-message {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .app-title {
+                font-size: 20px;
+            }
+
+            .congrats-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="app-logo">
+                <div class="app-logo-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <div>
+                    <h1 class="app-title">WD <span>BESAR</span></h1>
+                    <p class="app-subtitle">Analisis & Ucapan Selamat untuk Kemenangan Besar</p>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Input Section -->
+        <section class="input-section">
+            <h3 class="section-title">
+                <i class="fas fa-database"></i>
+                INPUT DATA TRANSAKSI
+            </h3>
+            
+            <textarea class="data-input" id="cyberData" placeholder="Tempel data transaksi di sini... [Timestamp] [Type] [UserID] [Amount]"></textarea>
+            <p class="input-hint">
+                <i class="fas fa-info-circle"></i> Data akan otomatis dianalisis saat ditempel. Format: [Timestamp] [Type] [UserID] [Amount]
+            </p>
+            
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label class="filter-label">Minimal WD</label>
+                    <input type="text" class="filter-input" id="cyberMinAmount" value="30.000.000" placeholder="Masukkan jumlah minimal">
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="clearCyberData()">
+                    <i class="fas fa-sync-alt"></i>
+                    RESET DATA
+                </button>
+            </div>
+        </section>
+        
+        <!-- Results -->
+        <div id="cyberResults" class="results-section">
+            <div class="summary-container" id="cyberSummary">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-label">TOTAL WD</div>
+                        <div class="summary-value"><span id="cyberCount">0</span></div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-label">TOTAL JUMLAH</div>
+                        <div class="summary-value"><span id="cyberTotal">Rp 0</span></div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-label">WD TERBESAR</div>
+                        <div class="summary-value"><span id="cyberMax">Rp 0</span></div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-label">FILTER MINIMAL</div>
+                        <div class="summary-value"><span id="cyberFilter">Rp 30.000.000</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="results-table" id="cyberTable">
+                <thead>
+                    <tr>
+                        <th>TIMESTAMP</th>
+                        <th>USER ID</th>
+                        <th>MASKED ID</th>
+                        <th>AMOUNT</th>
+                        <th>AKSI</th>
+                    </tr>
+                </thead>
+                <tbody id="cyberResultsBody">
+                    <!-- Results will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Congratulations Section -->
+        <div id="cyberCongrats" class="congrats-container">
+            <div class="congrats-header">
+                <h3 class="congrats-title">
+                    <i class="fas fa-trophy"></i> UCAPAN SELAMAT
+                </h3>
+                <p class="congrats-subtitle">Pesan untuk member yang mendapatkan kemenangan besar</p>
+            </div>
+            
+            <div class="congrats-message" id="congratsMessage">
+                Selamat kepada User ID : <span class="highlight" id="congratsUserId">ga*****2</span> telah berhasil mendapat kemenangan besar pada permainan Pragmatic Play "Sweet Bonanza" sebesar <span class="highlight" id="congratsAmount">Rp.110,000,000</span>,-<br><br>
+                
+                Di Linetogel Kepercayaan dan kepuasan member adalah PRIORITAS utama kami. Sudah terbukti dan terpercaya, semua kemenangan member 100% Dibayarkan tanpa alasan apapun. Tak perlu ragu, ribuan member sudah merasakan sendiri sensasi menang besar dan langsung cair tanpa drama. Gabung sekarang di Linetogel dan rasakan pengalaman bermain yang aman, seru, dan tentunya menguntungkan.<br><br>
+                
+                Baik bosku, Terima kasih
+            </div>
+            
+            <p class="congrats-footer">
+                <i class="fas fa-info-circle"></i> Pesan ini dapat disalin dan dibagikan melalui media sosial atau grup komunitas
+            </p>
+            
+            <div class="congrats-actions">
+                <button class="btn btn-secondary" onclick="document.getElementById('cyberCongrats').style.display = 'none'">
+                    <i class="fas fa-times"></i>
+                    TUTUP
+                </button>
+                <button class="btn btn-primary" onclick="copyCongratsMessage()">
+                    <i class="fas fa-copy"></i>
+                    SALIN PESAN
+                </button>
+            </div>
+        </div>
+        
+        <footer class="app-footer">
+            <p>© 2025 WD BESAR | PEPEK NETWORK - Sistem Analisis Kemenangan Besar</p>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div id="cyberToast" class="toast">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span id="cyberToastMessage">Sistem siap digunakan</span>
+    </div>
+
+    <!-- Loader -->
+    <div id="cyberLoader" class="loader" style="display: none;">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">MEMPROSES TRANSAKSI...</div>
+        </div>
+    </div>
+
+    <script>
+        // Auto analyze when data is pasted
+        document.getElementById('cyberData').addEventListener('paste', function(e) {
+            setTimeout(() => {
+                analyzeCyberWD();
+            }, 100);
+        });
+        
+        // Format rupiah input
+        document.getElementById('cyberMinAmount').addEventListener('input', function(e) {
+            // Get current cursor position
+            const cursorPosition = e.target.selectionStart;
+            
+            // Format the value
+            let value = e.target.value.replace(/[^\d]/g, '');
+            
+            if (value) {
+                // Format as Indonesian currency (with dots)
+                const formattedValue = formatNumberWithDots(parseInt(value));
+                e.target.value = formattedValue;
+                
+                // Restore cursor position
+                const newCursorPosition = cursorPosition + (e.target.value.length - formattedValue.length);
+                e.target.setSelectionRange(newCursorPosition, newCursorPosition);
+            }
+        });
+
+        // Format number with dots for thousands separator
+        function formatNumberWithDots(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // Toast Notification
+        function showCyberToast(message, type = 'info') {
+            const toast = document.getElementById('cyberToast');
+            const toastIcon = toast.querySelector('.toast-icon');
+            const toastMessage = document.getElementById('cyberToastMessage');
+            
+            toastMessage.textContent = message;
+            
+            // Set icon and color based on type
+            toast.className = 'toast';
+            
+            switch(type) {
+                case 'success':
+                    toast.classList.add('success');
+                    toastIcon.className = 'fas fa-check-circle toast-icon';
+                    break;
+                case 'error':
+                    toast.classList.add('error');
+                    toastIcon.className = 'fas fa-exclamation-circle toast-icon';
+                    break;
+                case 'warning':
+                    toast.classList.add('info');
+                    toastIcon.className = 'fas fa-exclamation-triangle toast-icon';
+                    break;
+                default:
+                    toast.classList.add('info');
+                    toastIcon.className = 'fas fa-info-circle toast-icon';
+            }
+            
+            toast.classList.remove('show', 'hide');
+            void toast.offsetWidth; // Trigger reflow
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                toast.classList.add('hide');
+            }, 3000);
+        }
+
+        // Show loading indicator
+        function showCyberLoader(show) {
+            const loader = document.getElementById('cyberLoader');
+            loader.style.display = show ? 'flex' : 'none';
+        }
+
+        // Main Cyber Analysis Function
+        function analyzeCyberWD() {
+            const rawData = document.getElementById('cyberData').value.trim();
+            if (!rawData) {
+                showCyberToast('Tidak ada data untuk dianalisis!', 'error');
+                document.getElementById('cyberResults').style.display = 'none';
+                return;
+            }
+            
+            // Get filter amount
+            let minAmount = 30000000;
+            try {
+                const minAmountStr = document.getElementById('cyberMinAmount').value.replace(/[^0-9]/g, '');
+                minAmount = parseInt(minAmountStr) || 30000000;
+            } catch (e) {
+                console.error('Error parsing min amount:', e);
+            }
+            
+            // Update UI to show current filter
+            document.getElementById('cyberFilter').textContent = 'Rp ' + minAmount.toLocaleString('id-ID').replace(/,/g, '.');
+            
+            showCyberLoader(true);
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                try {
+                    const lines = rawData.split('\n');
+                    const largeWDs = [];
+                    let totalAmount = 0;
+                    let count = 0;
+                    let maxAmount = 0;
+                    
+                    for (const line of lines) {
+                        if (!line.trim()) continue;
+                        
+                        const parts = line.split(/\t|\s{2,}/).filter(part => part.trim() !== '');
+                        if (parts.length < 6) continue;
+                        
+                        if (parts[1] === 'Withdraw') {
+                            const amountStr = parts[4].replace(/\./g, '').replace('Rp', '').replace(/,/g, '.').trim();
+                            const amount = parseInt(amountStr);
+                            
+                            if (amount > minAmount) {
+                                const originalUserId = parts[2];
+                                const maskedUserId = cyberMaskID(originalUserId);
+                                
+                                largeWDs.push({
+                                    dateTime: parts[0],
+                                    originalUserId,
+                                    maskedUserId,
+                                    amount
+                                });
+                                
+                                totalAmount += amount;
+                                count++;
+                                
+                                if (amount > maxAmount) {
+                                    maxAmount = amount;
+                                }
+                            }
+                        }
+                    }
+                    
+                    displayCyberResults(largeWDs, count, totalAmount, maxAmount);
+                    
+                    if (count > 0) {
+                        showCyberToast(`Ditemukan ${count} WD besar (>${cyberFormatCurrency(minAmount)})`, 'success');
+                    } else {
+                        showCyberToast(`Tidak ditemukan WD di atas ${cyberFormatCurrency(minAmount)}`, 'warning');
+                    }
+                } catch (error) {
+                    console.error('Error analyzing data:', error);
+                    showCyberToast('Error saat menganalisis data!', 'error');
+                } finally {
+                    showCyberLoader(false);
+                }
+            }, 800);
+        }
+        
+        function cyberMaskID(userId) {
+            if (!userId) return 'N/A';
+            if (userId.length <= 3) return userId.charAt(0) + '***';
+            const firstTwo = userId.substring(0, 2);
+            const lastOne = userId.charAt(userId.length - 1);
+            return firstTwo + '*'.repeat(Math.max(userId.length - 3, 1)) + lastOne;
+        }
+        
+        function displayCyberResults(results, count, total, maxAmount) {
+            const resultContainer = document.getElementById('cyberResults');
+            const resultBody = document.getElementById('cyberResultsBody');
+            const countElement = document.getElementById('cyberCount');
+            const totalElement = document.getElementById('cyberTotal');
+            const maxAmountElement = document.getElementById('cyberMax');
+            
+            resultBody.innerHTML = '';
+            countElement.textContent = formatNumberWithDots(count);
+            totalElement.textContent = cyberFormatCurrency(total);
+            maxAmountElement.textContent = cyberFormatCurrency(maxAmount);
+            
+            if (results.length === 0) {
+                resultContainer.style.display = 'none';
+                return;
+            }
+            
+            // Sort by amount descending
+            results.sort((a, b) => b.amount - a.amount);
+            
+            results.forEach(tx => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="timestamp-cell">
+                        <span>${tx.dateTime}</span>
+                    </td>
+                    <td>
+                        <span class="user-id-cell">${tx.originalUserId}</span>
+                    </td>
+                    <td>
+                        <span class="masked-id-cell">${tx.maskedUserId}</span>
+                    </td>
+                    <td class="amount-cell">
+                        <span>${cyberFormatCurrency(tx.amount)}</span>
+                    </td>
+                    <td>
+                        <div class="action-cell">
+                            <button class="action-btn" onclick="cyberCopy('${tx.originalUserId}', 'ID User')" title="Salin ID Asli">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <button class="action-btn" onclick="cyberCopy('${tx.maskedUserId}', 'ID Disamarkan')" title="Salin ID Disamarkan">
+                                <i class="fas fa-user-secret"></i>
+                            </button>
+                            <button class="action-btn" onclick="generateCongratsMessage('${tx.originalUserId}', '${tx.maskedUserId}', ${tx.amount})" title="Buat Ucapan">
+                                <i class="fas fa-gift"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                resultBody.appendChild(row);
+            });
+            
+            resultContainer.style.display = 'block';
+        }
+        
+        function cyberCopy(text, label = 'Teks') {
+            navigator.clipboard.writeText(text)
+                .then(() => showCyberToast(`${label} disalin: ${text}`, 'success'))
+                .catch(err => {
+                    console.error('Gagal menyalin: ', err);
+                    showCyberToast(`Gagal menyalin ${label.toLowerCase()}!`, 'error');
+                });
+        }
+        
+        function cyberFormatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID').replace(/,/g, '.');
+        }
+        
+        function clearCyberData() {
+            document.getElementById('cyberData').value = '';
+            document.getElementById('cyberMinAmount').value = '30.000.000';
+            document.getElementById('cyberResults').style.display = 'none';
+            document.getElementById('cyberCongrats').style.display = 'none';
+            showCyberToast('Data telah direset', 'info');
+        }
+        
+        // Generate congratulation message
+        function generateCongratsMessage(originalUserId, maskedUserId, amount) {
+            // Format amount with commas
+            const formattedAmount = 'Rp.' + amount.toLocaleString('en-US') + ',-';
+            
+            // Update UI elements
+            document.getElementById('congratsUserId').textContent = maskedUserId;
+            document.getElementById('congratsAmount').textContent = formattedAmount;
+            
+            // Show the congratulations section
+            document.getElementById('cyberCongrats').style.display = 'block';
+            
+            // Scroll to the congratulations section
+            document.getElementById('cyberCongrats').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+            
+            showCyberToast(`Pesan ucapan untuk ${maskedUserId} siap!`, 'success');
+        }
+        
+        // Copy congratulation message to clipboard
+        function copyCongratsMessage() {
+            const userId = document.getElementById('congratsUserId').textContent;
+            const amount = document.getElementById('congratsAmount').textContent;
+            
+            const message = `Selamat kepada User ID : ${userId} telah berhasil mendapat kemenangan besar pada permainan Pragmatic Play "Sweet Bonanza" sebesar ${amount}\n\n` +
+                            `Di Linetogel Kepercayaan dan kepuasan member adalah PRIORITAS utama kami. Sudah terbukti dan terpercaya, semua kemenangan member 100% Dibayarkan tanpa alasan apapun. Tak perlu ragu, ribuan member sudah merasakan sendiri sensasi menang besar dan langsung cair tanpa drama. Gabung sekarang di Linetogel dan rasakan pengalaman bermain yang aman, seru, dan tentunya menguntungkan.\n\n` +
+                            `Baik bosku, Terima kasih`;
+            
+            navigator.clipboard.writeText(message)
+                .then(() => showCyberToast('Pesan ucapan berhasil disalin!', 'success'))
+                .catch(err => {
+                    console.error('Gagal menyalin pesan: ', err);
+                    showCyberToast('Gagal menyalin pesan!', 'error');
+                });
+        }
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', function() {
+            showCyberToast('Sistem siap digunakan', 'success');
+        });
+    </script>
+</body>
+</html>

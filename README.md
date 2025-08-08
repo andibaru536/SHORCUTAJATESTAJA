@@ -1,2 +1,0 @@
-# SHORCUTAJATESTAJA
-Untuk mempermudah pekerjaan
